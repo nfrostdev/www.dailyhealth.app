@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Health — Privacy-First Health Apps</title>
+    <meta name="description" content="Privacy-first health tracking apps. No accounts. No cloud. No data collection. Your data stays on your device.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,300&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'media',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+                        serif: ['Fraunces', 'Georgia', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up { animation: fadeUp 0.8s ease-out both; }
+        .animate-delay-100 { animation-delay: 0.1s; }
+        .animate-delay-200 { animation-delay: 0.2s; }
+        .animate-delay-300 { animation-delay: 0.3s; }
+        .animate-delay-400 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="font-sans bg-stone-50 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-100 min-h-screen">
+    <header class="py-8">
+        <div class="max-w-5xl mx-auto px-6 flex items-center justify-between">
+            <a href="/" class="font-serif text-xl font-medium tracking-tight text-neutral-800 dark:text-neutral-100 no-underline">Daily Health<span class="opacity-40">.</span></a>
+            <nav class="relative">
+                <button id="apps-menu-button" class="flex items-center gap-1.5 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors cursor-pointer">
+                    Apps
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+                <div id="apps-menu" class="hidden absolute right-0 mt-2 w-52 bg-white dark:bg-neutral-800 rounded-xl shadow-lg border border-black/5 dark:border-white/10 py-2 z-50">
+                    <a href="https://cycle.dailyhealth.app/" class="flex items-center gap-3 px-4 py-2 text-sm text-neutral-600 dark:text-neutral-400 no-underline hover:bg-stone-100 dark:hover:bg-neutral-700 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors">
+                        <span class="w-5 h-5 flex items-center justify-center shrink-0">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="moonGradientNav" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#f43f5e"/>
+                                        <stop offset="100%" stop-color="#7c3aed"/>
+                                    </linearGradient>
+                                    <filter id="starGlowNav" x="-100%" y="-100%" width="300%" height="300%">
+                                        <feGaussianBlur stdDeviation="1" result="blur"/>
+                                        <feMerge>
+                                            <feMergeNode in="blur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <circle cx="46" cy="12" r="2.5" fill="#fbbf24" filter="url(#starGlowNav)"/>
+                                <circle cx="54" cy="28" r="1.5" fill="#fbbf24" filter="url(#starGlowNav)"/>
+                                <circle cx="50" cy="42" r="2" fill="#fbbf24" filter="url(#starGlowNav)"/>
+                                <path d="M28 6C14.745 6 4 16.745 4 30s10.745 24 24 24c1.2 0 2.38-.09 3.52-.27C22.24 51.76 16 42.16 16 30S22.24 8.24 31.52 6.27C30.38 6.09 29.2 6 28 6z" fill="url(#moonGradientNav)"/>
+                            </svg>
+                        </span>
+                        Cycle Tracker
+                    </a>
+                    <a href="https://fasting.dailyhealth.app/" class="flex items-center gap-3 px-4 py-2 text-sm text-neutral-600 dark:text-neutral-400 no-underline hover:bg-stone-100 dark:hover:bg-neutral-700 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors">
+                        <span class="w-5 h-5 flex items-center justify-center shrink-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-5 h-5" aria-hidden="true">
+                                <circle cx="50" cy="50" r="44" fill="#334155" />
+                                <circle cx="50" cy="50" r="34" fill="#0f172a" />
+                                <circle cx="50" cy="50" r="39" fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round" stroke-dasharray="184" stroke-dashoffset="46" transform="rotate(-90 50 50)" />
+                            </svg>
+                        </span>
+                        Fasting Timer
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <script>
+        const button = document.getElementById('apps-menu-button');
+        const menu = document.getElementById('apps-menu');
+        
+        button.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (!button.contains(e.target) && !menu.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+
+    <main>
+        <section class="py-20 sm:py-24 text-center">
+            <div class="max-w-5xl mx-auto px-6">
+                <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-light leading-tight tracking-tight mb-6 animate-fade-up">Built for you,<br><em class="italic">not your data</em></h1>
+                <p class="text-lg text-neutral-600 dark:text-neutral-400 animate-fade-up animate-delay-100">No accounts. No cloud. No data collection.</p>
+            </div>
+        </section>
+
+        <section class="pt-10 pb-16 sm:pb-20">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="https://cycle.dailyhealth.app/" class="group block bg-stone-100 dark:bg-neutral-800 rounded-3xl p-8 sm:p-10 no-underline border border-black/5 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-up animate-delay-300">
+                        <div class="flex items-center gap-4 mb-6">
+                            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 shrink-0" aria-hidden="true">
+                                <defs>
+                                    <linearGradient id="moonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#f43f5e"/>
+                                        <stop offset="100%" stop-color="#7c3aed"/>
+                                    </linearGradient>
+                                    <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+                                        <feGaussianBlur stdDeviation="1" result="blur"/>
+                                        <feMerge>
+                                            <feMergeNode in="blur"/>
+                                            <feMergeNode in="SourceGraphic"/>
+                                        </feMerge>
+                                    </filter>
+                                </defs>
+                                <circle cx="46" cy="12" r="2.5" fill="#fbbf24" filter="url(#starGlow)"/>
+                                <circle cx="54" cy="28" r="1.5" fill="#fbbf24" filter="url(#starGlow)"/>
+                                <circle cx="50" cy="42" r="2" fill="#fbbf24" filter="url(#starGlow)"/>
+                                <path d="M28 6C14.745 6 4 16.745 4 30s10.745 24 24 24c1.2 0 2.38-.09 3.52-.27C22.24 51.76 16 42.16 16 30S22.24 8.24 31.52 6.27C30.38 6.09 29.2 6 28 6z" fill="url(#moonGradient)"/>
+                            </svg>
+                            <h2 class="font-serif text-2xl font-medium tracking-tight text-neutral-800 dark:text-neutral-100">Cycle Tracker</h2>
+                        </div>
+                        <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">A private period tracker that keeps your most personal health data exactly where it belongs—on your device. Track cycles, symptoms, and predictions securely.</p>
+                        <span class="inline-flex items-center gap-2 text-sm font-medium text-pink-500 dark:text-pink-400 group-hover:gap-3 transition-all duration-300">
+                            Open App
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://fasting.dailyhealth.app/" class="group block bg-stone-100 dark:bg-neutral-800 rounded-3xl p-8 sm:p-10 no-underline border border-black/5 dark:border-white/10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-up animate-delay-400">
+                        <div class="flex items-center gap-4 mb-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="w-10 h-10 shrink-0" aria-hidden="true">
+                                <circle cx="50" cy="50" r="44" fill="#334155" />
+                                <circle cx="50" cy="50" r="34" fill="#0f172a" />
+                                <circle cx="50" cy="50" r="39" fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round" stroke-dasharray="184" stroke-dashoffset="46" transform="rotate(-90 50 50)" />
+                            </svg>
+                            <h2 class="font-serif text-2xl font-medium tracking-tight text-neutral-800 dark:text-neutral-100">Fasting Timer</h2>
+                        </div>
+                        <p class="text-neutral-600 dark:text-neutral-400 text-sm leading-relaxed mb-6">Track your intermittent fasting with an elegant timer. See your metabolic zones, review your history, and build healthy habits—all without creating an account.</p>
+                        <span class="inline-flex items-center gap-2 text-sm font-medium text-emerald-600 dark:text-emerald-400 group-hover:gap-3 transition-all duration-300">
+                            Open App
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-14 sm:py-16 border-t border-black/5 dark:border-white/10">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="max-w-xl">
+                    <h2 class="font-serif text-2xl sm:text-3xl font-medium tracking-tight mb-5 text-neutral-800 dark:text-neutral-100">Privacy isn't just a <em class="italic">feature</em>, it's a <strong class="font-semibold">foundation</strong>.</h2>
+                    <p class="text-neutral-600 dark:text-neutral-400 leading-relaxed">Too many health apps treat privacy as an afterthought: a toggle in settings or a line in a policy no one reads. We took a different approach. Daily Health apps work entirely offline with no accounts, no cloud, and no data collection. Your information never leaves your device because we designed it that way from day one.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-10 border-t border-black/5 dark:border-white/10">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-neutral-500 dark:text-neutral-500">© 2026 Daily Health. Made with care for your privacy.</p>
+                <nav class="flex gap-6">
+                    <a href="https://cycle.dailyhealth.app/" class="text-sm text-neutral-600 dark:text-neutral-400 no-underline hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors">Cycle Tracker</a>
+                    <a href="https://fasting.dailyhealth.app/" class="text-sm text-neutral-600 dark:text-neutral-400 no-underline hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors">Fasting Timer</a>
+                </nav>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
